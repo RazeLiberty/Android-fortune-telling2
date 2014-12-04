@@ -13,7 +13,20 @@
     <Button
         android:id="@+id/button02_id"
         android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="やり直す"
+        android:textSize="8dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="goBack" />
+        android:layout_below="@+id/button02_id"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="129dp"
+        android:text="本当に占いますか？"
+        android:textSize="30sp" />
 
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.example.fortune_telling2;
 
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.widget.Button;
 import android.content.Intent;
@@ -13,12 +15,26 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 	public static final int MENU_SELECT_A = 0;
+	
+	private SoundPool mSoundPool;
+	private int mSoundId;
+	
+	
+	
 	//public static final int MENU_SELECT_B = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    	
+     // 予め音声データを読み込む
+        mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        mSoundId = mSoundPool.load(getApplicationContext(), R.raw.aaa, 0);
+        
+        // 再生
+    	mSoundPool.play(mSoundId, 1.0F, 1.0F, 0, 0, 1.0F);
+    	
         
         Button btn = (Button)findViewById(R.id.button01_id);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -49,4 +65,21 @@ public class MainActivity extends Activity {
         }
         return false;
     }
+ /*   
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // リリース
+        mSoundPool.release();
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 予め音声データを読み込む
+        mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        mSoundId = mSoundPool.load(getApplicationContext(), R.raw.aaa, 0);
+    }
+   */ 
+    
 }
