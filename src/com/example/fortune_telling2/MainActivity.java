@@ -5,7 +5,9 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,7 +30,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        
+      //まずレイアウト（ここではリニア）を取得し、背景色を付ける
+        RelativeLayout rl= (RelativeLayout)findViewById(R.id.relativeLayout);
+
+        //背景色をダークグレイにするなら、
+        rl.setBackgroundColor(Color.DKGRAY);
     	
      // 予め音声データを読み込む
         mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
