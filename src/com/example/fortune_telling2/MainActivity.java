@@ -5,7 +5,9 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +29,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+      //まずレイアウト（ここではリニア）を取得し、背景色を付ける
+        RelativeLayout rl= (RelativeLayout)findViewById(R.id.relativeLayout);
+
+        //背景色をダークグレイにするなら、
+        rl.setBackgroundColor(Color.DKGRAY);
     	
      // 予め音声データを読み込む
         mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
@@ -35,7 +43,7 @@ public class MainActivity extends Activity {
         // 再生
     	mSoundPool.play(mSoundId, 1.0F, 1.0F, 0, 0, 1.0F);
     	
-        
+        //ボタン
         Button btn = (Button)findViewById(R.id.button01_id);
         btn.setOnClickListener(new View.OnClickListener() {
         	@Override
@@ -49,13 +57,13 @@ public class MainActivity extends Activity {
         });
     }
     
+    //メニュー
     public boolean onCreateOptionsMenu(Menu menu){
     	 
         menu.add(0, MENU_SELECT_A, 0, "finish App");
      
         return true;
     }
-    
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case MENU_SELECT_A:

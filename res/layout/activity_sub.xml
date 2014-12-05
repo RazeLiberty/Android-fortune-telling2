@@ -11,7 +11,7 @@
         />
 
     <Button
-        android:id="@+id/button02_id"
+        android:id="@+id/goBack"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_alignParentLeft="true"
@@ -20,13 +20,13 @@
         android:textSize="8dp" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/fortuneResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button02_id"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="129dp"
-        android:text="本当に占いますか？"
+        android:text="占い結果"
         android:textSize="30sp" />
 
 </RelativeLayout>

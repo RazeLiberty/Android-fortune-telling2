@@ -18,26 +18,26 @@ public class SubActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sub);
 		
-		
+		//占いランダム処理
 		Random r = new Random();
 		int n = r.nextInt(3) + 1;
-		TextView textView01 = (TextView) findViewById(R.id.textView1);  
+		TextView resultLabel = (TextView) findViewById(R.id.fortuneResult);
 		switch(n){
 			case 1:
-				textView01.setText("大吉");
+				resultLabel.setText("大吉");
 				break;
 				
 			case 2:
-				textView01.setText("吉");
+				resultLabel.setText("吉");
 				break;
 				
 			case 3:
-				textView01.setText("凶");
+				resultLabel.setText("凶");
 				break;
 		}
-
-		Button btn = (Button)findViewById(R.id.button02_id);
-		btn.setOnClickListener(new View.OnClickListener() {
+		//ボタン
+		Button backButton = (Button)findViewById(R.id.goBack);
+		backButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// 次画面のアクティビティ終了
