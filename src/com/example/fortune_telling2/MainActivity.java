@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
         RelativeLayout rl= (RelativeLayout)findViewById(R.id.relativeLayout);
 
         //背景色をダークグレイにするなら、
-        rl.setBackgroundColor(Color.DKGRAY);
+        rl.setBackgroundColor(Color.BLACK);
     	
      // 予め音声データを読み込む
         mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
