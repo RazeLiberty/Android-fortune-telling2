@@ -27,8 +27,7 @@
         android:layout_below="@+id/textview01_id"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
-        android:src="@drawable/bba_1"
-    	android:contentDescription="占いババ" />
+        android:src="@drawable/bba_1" />
 
     <TextView
         android:id="@+id/textView1"
