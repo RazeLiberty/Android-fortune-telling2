@@ -20,7 +20,7 @@
         android:textSize="8dp" />
 
     <TextView
-        android:id="@+id/fortuneResult"
+        android:id="@+id/result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button02_id"
@@ -28,5 +28,14 @@
         android:layout_marginTop="129dp"
         android:text="占い結果"
         android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="99dp"
+        android:text="結果保存" />
 
 </RelativeLayout>

@@ -21,7 +21,7 @@ public class SubActivity extends Activity {
 		//占いランダム処理
 		Random r = new Random();
 		int n = r.nextInt(5) + 1;
-		TextView resultLabel = (TextView) findViewById(R.id.fortuneResult);
+		final TextView resultLabel = (TextView) findViewById(R.id.result_text);
 		switch(n){
 			case 1:
 				resultLabel.setText("大吉");
@@ -43,7 +43,7 @@ public class SubActivity extends Activity {
 				resultLabel.setText("凶");
 				break;
 		}
-		//ボタン
+		//やり直しボタン
 		Button backButton = (Button)findViewById(R.id.goBack);
 		backButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -51,6 +51,19 @@ public class SubActivity extends Activity {
 				// 次画面のアクティビティ終了
 				finish();
 			}
-			});
+		});
+
+		//結果保存ボタン
+		Button saveButton = (Button)findViewById(R.id.save_button);
+		saveButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//保存
+				android.content.SharedPreferences sp = getSharedPreferences("FortuneResult", MODE_PRIVATE);
+				sp.edit().putString(resultLabel).commit();
+				sp.edit().putInt("integer", 100).commit();
+			}
+		});
+		
 	}
 }
