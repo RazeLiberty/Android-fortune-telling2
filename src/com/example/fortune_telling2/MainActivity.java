@@ -54,7 +54,6 @@ public class MainActivity extends Activity {
         //プレイヤーの初期化
         final SePlayer se= new SePlayer(this); 
         
-    	
         //ボタン
         Button btn = (Button)findViewById(R.id.button01_id);
         btn.setOnClickListener(new View.OnClickListener() {

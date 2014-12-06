@@ -20,7 +20,7 @@ public class SubActivity extends Activity {
 		
 		//è‚¢ƒ‰ƒ“ƒ_ƒ€ˆ—
 		Random r = new Random();
-		int n = r.nextInt(3) + 1;
+		int n = r.nextInt(5) + 1;
 		TextView resultLabel = (TextView) findViewById(R.id.fortuneResult);
 		switch(n){
 			case 1:
@@ -32,6 +32,14 @@ public class SubActivity extends Activity {
 				break;
 				
 			case 3:
+				resultLabel.setText("’†‹g");
+				break;
+				
+			case 4:
+				resultLabel.setText("¬‹g");
+				break;
+				
+			case 5:
 				resultLabel.setText("‹¥");
 				break;
 		}
