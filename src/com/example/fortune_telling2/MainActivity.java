@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 			this.mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 	 
 			// load(コンテキスト,読み込むリソースID,音の優先度)
-			this.se = mSoundPool.load(context, R.raw.aaa, 1);
+			this.se = mSoundPool.load(context, R.raw.ban1, 1);
 		}
 	 
 		public void playSe()
