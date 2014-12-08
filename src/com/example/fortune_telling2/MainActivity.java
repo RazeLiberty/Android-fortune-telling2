@@ -1,13 +1,10 @@
 package com.example.fortune_telling2;
 
 import android.app.Activity;
-import android.media.AudioManager;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
