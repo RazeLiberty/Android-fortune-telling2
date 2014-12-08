@@ -5,8 +5,11 @@ import java.util.Random;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +18,32 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 @SuppressLint("CommitPrefEdits") public class SubActivity extends Activity {
-	//WrapperShared shared = new WrapperShared(this);
 	public static String resultStr;
-	//public static String load_data;	//データ読み出し
 	
+	//サウンドクラス
+		public class SePlayer {
+			public SoundPool mSoundPool; 
+			public int se[];// 読み込んだ効果音
+		 
+			public SePlayer(Context context)
+			{
+				// new SoundPool(読み込むファイル数,読み込む種類,読み込む質)
+				this.mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+		 
+				// load(コンテキスト,読み込むリソースID,音の優先度)
+				this.se[0] = mSoundPool.load(context, R.raw.aaa, 1);
+				this.se[1] = mSoundPool.load(context, R.raw.aaa, 1);
+				this.se[2] = mSoundPool.load(context, R.raw.aaa, 1);
+				this.se[3] = mSoundPool.load(context, R.raw.aaa, 1);
+				this.se[4] = mSoundPool.load(context, R.raw.aaa, 1);
+			}
+		 
+			public void playSe()
+			{
+				// play(再生するサウンドID,左のボリューム,右のボリューム,優先度,ループ回数(0はしない、-1は無限),再生レート)
+				mSoundPool.play(se[], 1.0f, 1.0f, 1, 0, 1.0f);
+			}
+		}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +55,9 @@ import android.widget.Toast;
         //背景色を黒に
 		rl.setBackgroundColor(Color.BLACK);
 		
+		//プレイヤーの初期化
+        final SePlayer se= new SePlayer(this); 
+		
 		//占いランダム処理
 		Random r = new Random();
 		int n = r.nextInt(5) + 1;
@@ -38,6 +66,7 @@ import android.widget.Toast;
 			case 1:
 				resultLabel.setText("大吉");
 				resultStr = "大吉";
+				this.se = mSoundPool.load(context, R.raw.aaa, 1);
 				break;
 				
 			case 2:
@@ -60,6 +89,8 @@ import android.widget.Toast;
 				resultStr = "凶";
 				break;
 		}
+		//SEの再生
+		se.playSe();
 		//やり直しボタン
 		Button backButton = (Button)findViewById(R.id.goBack);
 		backButton.setOnClickListener(new View.OnClickListener() {
