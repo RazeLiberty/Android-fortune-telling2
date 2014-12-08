@@ -38,7 +38,7 @@ public class ThirdActivity extends Activity {
 	// 読み込み
 		private void loadData() {
 			SharedPreferences sp = getSharedPreferences("com.example.fortune_telling2", 0);
-			SubActivity.load_data = sp.getString("SAVE_DATA", SubActivity.load_data);
-		    Toast.makeText(ThirdActivity.this, "読みだしたデータ" + SubActivity.load_data, Toast.LENGTH_SHORT).show();
+			SubActivity.resultStr = sp.getString("SAVE_DATA", SubActivity.resultStr);
+		    Toast.makeText(ThirdActivity.this, "読みだしたデータ" + SubActivity.resultStr, Toast.LENGTH_SHORT).show();
 		}
 }

@@ -12,11 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("CommitPrefEdits") public class SubActivity extends Activity {
 	//WrapperShared shared = new WrapperShared(this);
-	public String resultStr;
-	public static String load_data;	//データ読み出し
+	public static String resultStr;
+	//public static String load_data;	//データ読み出し
 	
 	
 	@Override
@@ -82,6 +83,7 @@ import android.widget.TextView;
 	private void saveData() {
 		SharedPreferences.Editor sp = getSharedPreferences("com.example.fortune_telling2", 0).edit();
 		sp.putString("SAVE_DATA", resultStr);
+		Toast.makeText(SubActivity.this, "保存しました", Toast.LENGTH_SHORT).show();
 	}
 	
 		

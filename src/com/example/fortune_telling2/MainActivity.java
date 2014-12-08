@@ -83,8 +83,8 @@ public class MainActivity extends Activity {
  // 読み込み
  		private void loadData() {
  			SharedPreferences sp = getSharedPreferences("com.example.fortune_telling2", 0);
- 			SubActivity.load_data = sp.getString("SAVE_DATA", SubActivity.load_data);
- 		    Toast.makeText(MainActivity.this, "読みだしたデータ" + SubActivity.load_data, Toast.LENGTH_SHORT).show();
+ 			SubActivity.resultStr = sp.getString("SAVE_DATA", SubActivity.resultStr);
+ 		    Toast.makeText(MainActivity.this, SubActivity.resultStr, Toast.LENGTH_SHORT).show();
  		}
     
     //メニュー
