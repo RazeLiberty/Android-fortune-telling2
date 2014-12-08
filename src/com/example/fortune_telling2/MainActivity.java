@@ -6,8 +6,10 @@ import android.media.SoundPool;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
@@ -73,15 +75,17 @@ public class MainActivity extends Activity {
         	@Override
         	public void onClick(View v) {
         		// TODO Auto-generated method stub
-        		//SEの再生
-        		se.playSe();
-        		// インテントのインスタンス生成
-        		Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
-        		// 次画面のアクティビティ起動
-        		startActivity(intent);
+        		loadData();
         	}
         });
     }
+    
+ // 読み込み
+ 		private void loadData() {
+ 			SharedPreferences sp = getSharedPreferences("com.example.fortune_telling2", 0);
+ 			SubActivity.load_data = sp.getString("SAVE_DATA", SubActivity.load_data);
+ 		    Toast.makeText(MainActivity.this, "読みだしたデータ" + SubActivity.load_data, Toast.LENGTH_SHORT).show();
+ 		}
     
     //メニュー
     public boolean onCreateOptionsMenu(Menu menu){

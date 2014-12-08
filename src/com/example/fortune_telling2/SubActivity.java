@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 @SuppressLint("CommitPrefEdits") public class SubActivity extends Activity {
-	WrapperShared shared = new WrapperShared(this);
+	//WrapperShared shared = new WrapperShared(this);
 	public String resultStr;
 	public static String load_data;	//データ読み出し
 	
@@ -25,7 +25,7 @@ import android.widget.TextView;
 		setContentView(R.layout.activity_sub);
 		
 		
-		RelativeLayout rl= (RelativeLayout)findViewById(R.id.relativeLayout);
+		RelativeLayout rl= (RelativeLayout)findViewById(R.id.relativeLayout2);
         //背景色を黒に
 		rl.setBackgroundColor(Color.BLACK);
 		
