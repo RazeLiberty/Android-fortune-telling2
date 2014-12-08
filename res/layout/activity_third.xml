@@ -10,32 +10,24 @@
         android:layout_height="wrap_content"
         />
 
-    <Button
-        android:id="@+id/goBack"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="やり直す"
-        android:textSize="8dp" />
-
     <TextView
         android:id="@+id/result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button02_id"
+        android:layout_below="@+id/textview02_id"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="129dp"
+        android:layout_marginTop="114dp"
         android:text="占い結果"
         android:textSize="30sp" />
 
     <Button
-        android:id="@+id/save_button"
+        android:id="@+id/goBack"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_below="@+id/result_text"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="117dp"
-        android:text="結果保存" />
+        android:layout_marginTop="84dp"
+        android:text="戻る"
+        android:textSize="8dp" />
 
 </RelativeLayout>

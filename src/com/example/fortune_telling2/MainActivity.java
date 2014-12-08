@@ -21,22 +21,22 @@ public class MainActivity extends Activity {
 	
 	//サウンドクラス
 	public class SePlayer {
-		private SoundPool soundPool; 
-		private int se;// 読み込んだ効果音
+		public SoundPool mSoundPool; 
+		public int se;// 読み込んだ効果音
 	 
 		public SePlayer(Context context)
 		{
 			// new SoundPool(読み込むファイル数,読み込む種類,読み込む質)
-			this.soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+			this.mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 	 
 			// load(コンテキスト,読み込むリソースID,音の優先度)
-			this.se = soundPool.load(context, R.raw.aaa, 1);
+			this.se = mSoundPool.load(context, R.raw.aaa, 1);
 		}
 	 
 		public void playSe()
 		{
 			// play(再生するサウンドID,左のボリューム,右のボリューム,優先度,ループ回数(0はしない、-1は無限),再生レート)
-			soundPool.play(se, 1.0f, 1.0f, 1, 0, 1.0f);
+			mSoundPool.play(se, 1.0f, 1.0f, 1, 0, 1.0f);
 		}
 	}
 	
@@ -45,18 +45,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        //まずレイアウト（ここではリニア）を取得し、背景色を付ける
         RelativeLayout rl= (RelativeLayout)findViewById(R.id.relativeLayout);
-
-        //背景色をダークグレイにするなら、
-        rl.setBackgroundColor(Color.BLACK);
+        //背景色を黒に
+		rl.setBackgroundColor(Color.BLACK);
         
         //プレイヤーの初期化
         final SePlayer se= new SePlayer(this); 
         
-        //ボタン
-        Button btn = (Button)findViewById(R.id.button01_id);
-        btn.setOnClickListener(new View.OnClickListener() {
+        //運勢ボタン
+        Button fortuneBtn = (Button)findViewById(R.id.fortuneButton);
+        fortuneBtn.setOnClickListener(new View.OnClickListener() {
         	@Override
         	public void onClick(View v) {
         		// TODO Auto-generated method stub
@@ -64,6 +62,21 @@ public class MainActivity extends Activity {
         		se.playSe();
         		// インテントのインスタンス生成
         		Intent intent = new Intent(MainActivity.this, SubActivity.class);
+        		// 次画面のアクティビティ起動
+        		startActivity(intent);
+        	}
+        });
+        
+      //ボタン
+        Button pastFortuneBtn = (Button)findViewById(R.id.pastFortuneButton);
+        pastFortuneBtn.setOnClickListener(new View.OnClickListener() {
+        	@Override
+        	public void onClick(View v) {
+        		// TODO Auto-generated method stub
+        		//SEの再生
+        		se.playSe();
+        		// インテントのインスタンス生成
+        		Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
         		// 次画面のアクティビティ起動
         		startActivity(intent);
         	}
@@ -86,7 +99,7 @@ public class MainActivity extends Activity {
         }
         return false;
     }
- /*   
+ /*
     @Override
     protected void onPause() {
         super.onPause();
@@ -99,8 +112,8 @@ public class MainActivity extends Activity {
         super.onResume();
         // 予め音声データを読み込む
         mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-        mSoundId = mSoundPool.load(getApplicationContext(), R.raw.aaa, 0);
+        SoundId = SoundPool.load(getApplicationContext(), R.raw.aaa, 0);
     }
-   */ 
+  */
     
 }

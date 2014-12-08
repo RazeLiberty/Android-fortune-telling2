@@ -2,21 +2,32 @@ package com.example.fortune_telling2;
 
 import java.util.Random;
 
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.media.SoundPool;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class SubActivity extends Activity {
-	/** Called when the activity is first created. */
+@SuppressLint("CommitPrefEdits") public class SubActivity extends Activity {
+	WrapperShared shared = new WrapperShared(this);
+	public String resultStr;
+	public static String load_data;	//ƒf[ƒ^“Ç‚İo‚µ
 	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sub);
+		
+		
+		RelativeLayout rl= (RelativeLayout)findViewById(R.id.relativeLayout);
+        //”wŒiF‚ğ•‚É
+		rl.setBackgroundColor(Color.BLACK);
 		
 		//è‚¢ƒ‰ƒ“ƒ_ƒ€ˆ—
 		Random r = new Random();
@@ -25,22 +36,27 @@ public class SubActivity extends Activity {
 		switch(n){
 			case 1:
 				resultLabel.setText("‘å‹g");
+				resultStr = "‘å‹g";
 				break;
 				
 			case 2:
 				resultLabel.setText("‹g");
+				resultStr = "‹g";
 				break;
 				
 			case 3:
 				resultLabel.setText("’†‹g");
+				resultStr = "’†‹g";
 				break;
 				
 			case 4:
 				resultLabel.setText("¬‹g");
+				resultStr = "¬‹g";
 				break;
 				
 			case 5:
 				resultLabel.setText("‹¥");
+				resultStr = "‹¥";
 				break;
 		}
 		//‚â‚è’¼‚µƒ{ƒ^ƒ“
@@ -58,12 +74,15 @@ public class SubActivity extends Activity {
 		saveButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//•Û‘¶
-				android.content.SharedPreferences sp = getSharedPreferences("FortuneResult", MODE_PRIVATE);
-				sp.edit().putString(resultLabel).commit();
-				sp.edit().putInt("integer", 100).commit();
+				saveData();
 			}
 		});
-		
 	}
+	// •Û‘¶
+	private void saveData() {
+		SharedPreferences.Editor sp = getSharedPreferences("com.example.fortune_telling2", 0).edit();
+		sp.putString("SAVE_DATA", resultStr);
+	}
+	
+		
 }
