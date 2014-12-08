@@ -3,9 +3,7 @@ package com.example.fortune_telling2;
 import java.util.Random;
 
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -13,10 +11,10 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-@SuppressLint("CommitPrefEdits") public class SubActivity extends Activity {
-	WrapperShared shared = new WrapperShared(this);
-	public String resultStr;
-	public static String load_data;	//ÉfÅ[É^ì«Ç›èoÇµ
+public class SubActivity extends Activity {
+	//WrapperShared shared = new WrapperShared(this);
+	//public String resultStr;
+	//public static String load_data;	//ÉfÅ[É^ì«Ç›èoÇµ
 	
 	
 	@Override
@@ -25,7 +23,7 @@ import android.widget.TextView;
 		setContentView(R.layout.activity_sub);
 		
 		
-		RelativeLayout rl= (RelativeLayout)findViewById(R.id.relativeLayout);
+		RelativeLayout rl= (RelativeLayout)findViewById(R.id.relativeLayout2);
         //îwåiêFÇçïÇ…
 		rl.setBackgroundColor(Color.BLACK);
 		
@@ -36,27 +34,27 @@ import android.widget.TextView;
 		switch(n){
 			case 1:
 				resultLabel.setText("ëÂãg");
-				resultStr = "ëÂãg";
+				//resultStr = "ëÂãg";
 				break;
 				
 			case 2:
 				resultLabel.setText("ãg");
-				resultStr = "ãg";
+				//resultStr = "ãg";
 				break;
 				
 			case 3:
 				resultLabel.setText("íÜãg");
-				resultStr = "íÜãg";
+				//resultStr = "íÜãg";
 				break;
 				
 			case 4:
 				resultLabel.setText("è¨ãg");
-				resultStr = "è¨ãg";
+				//resultStr = "è¨ãg";
 				break;
 				
 			case 5:
 				resultLabel.setText("ã•");
-				resultStr = "ã•";
+			//	resultStr = "ã•";
 				break;
 		}
 		//Ç‚ÇËíºÇµÉ{É^Éì
@@ -74,15 +72,16 @@ import android.widget.TextView;
 		saveButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				saveData();
+				//saveData();
 			}
 		});
 	}
+	/*
 	// ï€ë∂
 	private void saveData() {
 		SharedPreferences.Editor sp = getSharedPreferences("com.example.fortune_telling2", 0).edit();
 		sp.putString("SAVE_DATA", resultStr);
 	}
-	
+	*/
 		
 }

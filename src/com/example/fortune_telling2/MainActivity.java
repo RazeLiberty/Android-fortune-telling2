@@ -72,13 +72,7 @@ public class MainActivity extends Activity {
         pastFortuneBtn.setOnClickListener(new View.OnClickListener() {
         	@Override
         	public void onClick(View v) {
-        		// TODO Auto-generated method stub
-        		//SEの再生
-        		se.playSe();
-        		// インテントのインスタンス生成
-        		Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
-        		// 次画面のアクティビティ起動
-        		startActivity(intent);
+        		
         	}
         });
     }

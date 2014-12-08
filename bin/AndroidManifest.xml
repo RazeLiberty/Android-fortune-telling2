@@ -25,9 +25,6 @@
         <activity
             android:name=".SubActivity" >
 		</activity>
-		<activity
-            android:name=".ThirdActivity" >
-		</activity>
     </application>
 
 </manifest>
