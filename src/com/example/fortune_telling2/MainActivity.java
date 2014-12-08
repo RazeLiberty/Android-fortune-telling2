@@ -1,10 +1,13 @@
 package com.example.fortune_telling2;
 
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -17,8 +20,28 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 	public static final int MENU_SELECT_A = 0;	
+	public int[] mSound = new int[1];
 	
-	
+
+	//サウンドクラス
+		public class SePlayer {
+			public SoundPool mSoundPool; 
+			public int se[];// 読み込んだ効果音
+			public SePlayer(Context context)
+			{
+				// new SoundPool(読み込むファイル数,読み込む種類,読み込む質)
+				this.mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+		 
+				// load(コンテキスト,読み込むリソースID,音の優先度)
+				mSound[0] = mSoundPool.load(context, R.raw.ban1, 1);
+			}
+		 
+			public void playSe()
+			{
+				// play(再生するサウンドID,左のボリューム,右のボリューム,優先度,ループ回数(0はしない、-1は無限),再生レート)
+				mSoundPool.play(mSound[0], 1.0f, 1.0f, 1, 0, 1.0f);
+			}
+		}
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +52,8 @@ public class MainActivity extends Activity {
         //背景色を黒に
 		rl.setBackgroundColor(Color.BLACK);
         
-        
+		//プレイヤーの初期化
+        final SePlayer se= new SePlayer(this); 
         
         //運勢ボタン
         Button fortuneBtn = (Button)findViewById(R.id.fortuneButton);
@@ -40,6 +64,8 @@ public class MainActivity extends Activity {
         		Intent intent = new Intent(MainActivity.this, SubActivity.class);
         		// 次画面のアクティビティ起動
         		startActivity(intent);
+        		//SEの再生
+        		se.playSe();
         	}
         });
         

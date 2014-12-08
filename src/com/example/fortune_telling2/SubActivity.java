@@ -5,11 +5,8 @@ import java.util.Random;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.media.AudioManager;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,30 +16,8 @@ import android.widget.Toast;
 
 @SuppressLint("CommitPrefEdits") public class SubActivity extends Activity {
 	public static String resultStr;
-	public int[] mSound = new int[3];
-	public char i;
 	
-	//サウンドクラス
-		public class SePlayer {
-			public SoundPool mSoundPool; 
-			public int se[];// 読み込んだ効果音
-			public SePlayer(Context context)
-			{
-				// new SoundPool(読み込むファイル数,読み込む種類,読み込む質)
-				this.mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-		 
-				// load(コンテキスト,読み込むリソースID,音の優先度)
-				mSound[0] = mSoundPool.load(context, R.raw.daikiti, 1);
-				mSound[1] = mSoundPool.load(context, R.raw.ban1, 1);
-				mSound[2] = mSoundPool.load(context, R.raw.fate1, 1);
-			}
-		 
-			public void playSe()
-			{
-				// play(再生するサウンドID,左のボリューム,右のボリューム,優先度,ループ回数(0はしない、-1は無限),再生レート)
-				mSoundPool.play(mSound[i], 1.0f, 1.0f, 1, 0, 1.0f);
-			}
-		}
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,8 +29,7 @@ import android.widget.Toast;
         //背景色を黒に
 		rl.setBackgroundColor(Color.BLACK);
 		
-		//プレイヤーの初期化
-        final SePlayer se= new SePlayer(this); 
+		
 		
 		//占いランダム処理
 		Random r = new Random();
@@ -65,35 +39,30 @@ import android.widget.Toast;
 			case 1:
 				resultLabel.setText("大吉");
 				resultStr = "大吉";
-				i = 0;
 				break;
 				
 			case 2:
 				resultLabel.setText("吉");
 				resultStr = "吉";
-				i = 1;
 				break;
 				
 			case 3:
 				resultLabel.setText("中吉");
 				resultStr = "中吉";
-				i = 1;
+	
 				break;
 				
 			case 4:
 				resultLabel.setText("小吉");
 				resultStr = "小吉";
-				i = 1;
 				break;
 				
 			case 5:
 				resultLabel.setText("凶");
 				resultStr = "凶";
-				i = 2;
 				break;
 		}
-		//SEの再生
-		se.playSe();
+		
 		//やり直しボタン
 		Button backButton = (Button)findViewById(R.id.goBack);
 		backButton.setOnClickListener(new View.OnClickListener() {
